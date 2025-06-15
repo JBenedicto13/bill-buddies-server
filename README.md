@@ -1,54 +1,32 @@
-# Bill Buddies
+# Bill Buddies Server
 
-**Bill Buddies** is a playful, web-based split bill tracker designed to help friends, families, and teams easily manage shared expenses and settle up with confidence.
+**Bill Buddies Server** is the RESTful API backend for [Bill Buddies](https://github.com/JBenedicto13/bill-buddies-web), a playful web app that helps friends, families, and teams easily split and settle shared expenses.
 
 ---
 
 ## 🎯 Purpose
 
-- Make group expense tracking simple, transparent, and fair
-- Calculate who owes whom and by how much
-- Help friends avoid awkward money conversations after shared events
+- Powers the Bill Buddies web app by managing groups, participants, expenses, and balance calculations.
+- Provides API endpoints for the Next.js + TypeScript frontend.
 
 ---
 
 ## 🚀 Core Features (MVP)
 
-1. **Create Groups:**  
-   Start a new group for an event (e.g., trip, dinner, shared apartment).
-
-2. **Add Participants:**  
-   Add people by name to each group.
-
-3. **Log Expenses:**  
-   - Record what was spent, who paid, and who participated in each expense.
-   - Expenses are split evenly in the MVP (custom splits in future versions).
-
-4. **View Balances:**  
-   Instantly see who owes whom and how much.
-
-5. **Settle Debts:**  
-   Mark debts as paid and update group balances.
+- **Group Management:** Create and manage groups/events.
+- **Participant Management:** Add participants to each group.
+- **Expense Logging:** Record expenses (who paid, amount, description, who participated).
+- **Balance Calculation:** Instantly compute who owes whom and how much.
+- **Debt Settlement:** Mark debts as settled and update balances.
 
 ---
 
-## 🤓 Example User Flow
+## 🏗️ Architecture & Tech Stack
 
-1. Alice creates a "Beach Trip" group with Bob and Cara.
-2. Alice pays $90 for groceries (all participate).
-3. Bob pays $30 for gas (all participate).
-4. Cara pays $60 for boat rental (all participate).
-5. App calculates and displays:
-   - Who owes whom and by how much, summarized simply.
-
----
-
-## 🛠️ Tech Stack (Proposed)
-
-- **Backend:** Go (Golang) – REST API
-- **Frontend:** (To be decided: initial version could be Go templates, React, Svelte, or Vue)
-- **Data Storage:** In-memory for MVP, with plans for file-based or lightweight DB
-- **Version Control:** GitHub
+- **Backend:** Go (Golang) REST API
+- **Frontend:** [bill-buddies-web](https://github.com/JBenedicto13/bill-buddies-web) (Next.js + TypeScript)
+- **Data Storage:** In-memory (MVP), with plans for persistent storage in future versions
+- **Containerization:** Docker (recommended for development and deployment)
 
 ---
 
@@ -74,19 +52,56 @@ type Group struct {
 
 ---
 
-## 📏 Next Steps
+## 🚦 Getting Started
 
-- Finalize MVP feature set
-- Sketch main UI screens/user flows
-- Set up project repos for backend and frontend
-- Break down MVP into tasks/issues
+### Local Development
+
+1. **Clone the repo:**
+   ```bash
+   git clone https://github.com/JBenedicto13/bill-buddies-server.git
+   cd bill-buddies-server
+   ```
+
+2. **Install dependencies:**
+   ```bash
+   go mod download
+   ```
+
+3. **Run the server (default port: 8090):**
+   ```bash
+   go run main.go
+   ```
+   By default, the server runs on [http://localhost:8090](http://localhost:8090).
+
+   > **Note:** You can configure the port by setting the `PORT` environment variable.
+
+### Docker
+
+1. **Build the Docker image:**
+   ```bash
+   docker build -t bill-buddies-server .
+   ```
+
+2. **Run the container (on port 8090):**
+   ```bash
+   docker run -p 8090:8090 --env PORT=8090 bill-buddies-server
+   ```
+
+   > **Tip:** Adjust the port if you need to avoid conflicts with other containers.
+
+---
+
+## 🌐 API Reference
+
+- The API is designed for use by the [Bill Buddies Web](https://github.com/JBenedicto13/bill-buddies-web) frontend.
+- [API docs coming soon!]
 
 ---
 
 ## 🤝 Contributing
 
-- Review this overview and suggest improvements!
-- We’ll divide core features for implementation after finalizing requirements.
+- Review this overview, suggest improvements, or open issues!
+- See the [frontend repo](https://github.com/JBenedicto13/bill-buddies-web) to understand how the web client consumes the API.
 
 ---
 
